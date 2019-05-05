@@ -29,14 +29,13 @@ namespace TestCaseManagementApp.Controllers
 
         // POST: TestStep/Create
         [HttpPost]
-        public ActionResult Add(TestStep ts)
+        public ActionResult Create(TestStep ts)
         {
             try
             {
-                ts.TestCaseID = 1;
                 db.TestSteps.Add(ts);
                 db.SaveChanges();
-                return RedirectToAction("List", "TestCase");
+                return RedirectToAction("Details", "TestCase", new { id = ts.TestCaseID });
             }
             catch
             {
@@ -69,18 +68,19 @@ namespace TestCaseManagementApp.Controllers
         // GET: TestStep/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var ts = db.TestSteps.Single(m => m.TestStepID == id);
+            return Delete(ts);
         }
 
         // POST: TestStep/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(TestStep ts)
         {
             try
             {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                db.TestSteps.Remove(ts);
+                db.SaveChanges();
+                return RedirectToAction("Details", "TestCase", new { id = ts.TestCaseID });
             }
             catch
             {

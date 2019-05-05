@@ -261,8 +261,8 @@
     <Content Include="Views\TestCase\Details.cshtml" />
     <Content Include="Views\TestCase\Create.cshtml" />
     <Content Include="Views\TestCase\Edit.cshtml" />
-    <Content Include="Views\TestStep\Create.cshtml" />
     <Content Include="Views\TestStep\TestSteps.cshtml" />
+    <Content Include="Views\TestStep\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
