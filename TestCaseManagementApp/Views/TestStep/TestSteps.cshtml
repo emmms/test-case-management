@@ -1,0 +1,52 @@
+﻿@model IEnumerable<TestCaseManagementApp.Models.TestStep>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StepNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Action)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Input)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExpectedResult)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StepNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Action)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Input)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExpectedResult)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.TestStepID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.TestStepID })
+            </td>
+        </tr>
+    }
+
+    <tr id="divPartialHolder"></tr>
+
+</table>
+<a href="javascript:ShowPartial()">Add a step</a>
+<script type="text/javascript">
+    function ShowPartial() {
+
+        $("#divPartialHolder").load('/TestStep/Create');
+        $("#divPartialHolder").show();
+    }
+</script>

@@ -1,0 +1,26 @@
+﻿@model TestCaseManagementApp.Models.TestStep
+
+@using (Html.BeginForm("Add", "TestStep", FormMethod.Post, new { id = "frmStep" }))
+{
+    @Html.AntiForgeryToken()
+    <td class="form-group">
+        @Html.EditorFor(model => model.StepNumber, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.StepNumber, "", new { @class = "text-danger" })
+    </td>
+    <td class="form-group">
+        @Html.EditorFor(model => model.Action, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Action, "", new { @class = "text-danger" })
+    </td>
+    <td class="form-group">
+        @Html.EditorFor(model => model.Input, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Input, "", new { @class = "text-danger" })
+    </td>
+    <td class="form-group">
+        @Html.EditorFor(model => model.ExpectedResult, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.ExpectedResult, "", new { @class = "text-danger" })
+    </td>
+    <td class="form-group">
+        @*<input type="submit" value="Add" class="btn btn-default" />*@
+        <a href="javascript:document.getElementById('frmStep').submit()">Add</a>
+    </td>
+}
